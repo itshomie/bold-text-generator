@@ -182,7 +182,8 @@
 - **联系邮箱**: support@boldtextgenerator.me
 
 ## 部署配置
-- **GitHub仓库**: 通过GitHub Pages部署
+- **GitHub仓库**: https://github.com/itshomie/bold-text-generator
+- **部署方式**: GitHub Pages
 - **DNS配置**: 通过Cloudflare管理
 - **SSL证书**: Cloudflare自动提供
 
