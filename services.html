@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Bold Text Generator Professional Solutions</title>
+    <meta name="description" content="Professional text formatting services, API documentation, batch processing, and enterprise solutions for bold text generation and unicode conversion.">
+    <meta name="keywords" content="bold text services, unicode API, text formatting solutions, batch text processing, enterprise text tools">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Bold Text Generator Services">
+    <meta property="og:description" content="Professional text formatting solutions for businesses and developers">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://boldtextgenerator.me/services">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://boldtextgenerator.me/services">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    
+    <style>
+        /* Services Page Specific Styles */
+        .services-hero {
+            padding: calc(var(--header-height) + 80px) 0 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .services-hero h1 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .services-hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            padding: 60px 0;
+        }
+        
+        .service-card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+        }
+        
+        .service-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .service-features li::before {
+            content: "✓";
+            color: var(--success-color);
+            font-weight: bold;
+        }
+        
+        .api-section {
+            background: var(--surface);
+            padding: 60px 0;
+        }
+        
+        .code-example {
+            background: var(--background);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--background) 100%);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0066FF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect width="40" height="40" rx="8" fill="url(#logoGradient)"/>
+                        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="24" font-weight="bold">B</text>
+                    </svg>
+                    <span class="logo-text">Bold Text Generator</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/services.html" class="active">Services</a></li>
+                    <li><a href="/privacy.html">Privacy</a></li>
+                </ul>
+                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Services Hero -->
+        <section class="services-hero">
+            <div class="container">
+                <h1>Professional Text Formatting Services</h1>
+                <p>Powerful solutions for businesses, developers, and content creators who need advanced text formatting capabilities</p>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section class="container">
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">📝</div>
+                    <h3>Batch Text Processing</h3>
+                    <p>Process multiple text strings simultaneously with our batch conversion tools. Perfect for content creators managing large volumes of text.</p>
+                    <ul class="service-features">
+                        <li>Convert up to 1000 lines at once</li>
+                        <li>Export to multiple formats</li>
+                        <li>Preserve original formatting</li>
+                        <li>Bulk download options</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Real-time API Access</h3>
+                    <p>Integrate bold text generation directly into your applications with our powerful JavaScript API and documentation.</p>
+                    <ul class="service-features">
+                        <li>RESTful API endpoints</li>
+                        <li>JavaScript SDK available</li>
+                        <li>Comprehensive documentation</li>
+                        <li>Rate limiting controls</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Custom Style Creation</h3>
+                    <p>Design your own unique text styles by combining different Unicode blocks and effects for brand-specific formatting.</p>
+                    <ul class="service-features">
+                        <li>Mix and match styles</li>
+                        <li>Save custom presets</li>
+                        <li>Brand style guidelines</li>
+                        <li>Export style codes</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Enterprise Solutions</h3>
+                    <p>Tailored solutions for businesses requiring extensive text formatting capabilities across teams and platforms.</p>
+                    <ul class="service-features">
+                        <li>Team collaboration tools</li>
+                        <li>Priority support</li>
+                        <li>Custom integrations</li>
+                        <li>Usage analytics</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile Integration</h3>
+                    <p>Seamless mobile app integration with native support for iOS and Android platforms.</p>
+                    <ul class="service-features">
+                        <li>Mobile SDK libraries</li>
+                        <li>Offline functionality</li>
+                        <li>Cross-platform sync</li>
+                        <li>Keyboard extensions</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Developer Tools</h3>
+                    <p>Comprehensive toolkit for developers including libraries, plugins, and extensions for popular frameworks.</p>
+                    <ul class="service-features">
+                        <li>npm packages available</li>
+                        <li>WordPress plugin</li>
+                        <li>Browser extensions</li>
+                        <li>GitHub integration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Documentation Section -->
+        <section class="api-section">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 40px;">Simple API Integration</h2>
+                <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 40px;">
+                    Our JavaScript API makes it easy to add bold text generation to your website or application. Here's a quick example:
+                </p>
+                
+                <div class="code-example">
+                    <pre><code>// Import the Bold Text Generator library
+import { BoldTextGenerator } from 'bold-text-generator';
+
+// Initialize the generator
+const generator = new BoldTextGenerator();
+
+// Convert text to bold
+const boldText = generator.convert('Hello World', 'mathBold');
+
+// Get all available styles
+const allStyles = generator.getAllStyles('Hello World');
+
+// Batch process multiple strings
+const batchResults = generator.batchConvert([
+    'First line',
+    'Second line',
+    'Third line'
+], 'mathBold');
+
+// Custom style combination
+const customStyle = generator.combine('Text', ['bold', 'italic']);</code></pre>
+                </div>
+
+                <p style="text-align: center; margin-top: 32px;">
+                    <a href="#" class="cta-button">View Full Documentation</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Use Cases Section -->
+        <section class="container" style="padding: 60px 20px;">
+            <h2 style="text-align: center; margin-bottom: 40px;">Who Uses Our Services?</h2>
+            
+            <div class="services-grid">
+                <div style="background: var(--surface); padding: 32px; border-radius: 12px;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 16px;">Content Creators</h4>
+                    <p>Social media influencers and content creators use our tools to make their posts stand out with unique text formatting that captures attention and increases engagement.</p>
+                </div>
+                
+                <div style="background: var(--surface); padding: 32px; border-radius: 12px;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 16px;">Marketing Teams</h4>
+                    <p>Digital marketers leverage our batch processing tools to format campaign content across multiple platforms while maintaining brand consistency.</p>
+                </div>
+                
+                <div style="background: var(--surface); padding: 32px; border-radius: 12px;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 16px;">Developers</h4>
+                    <p>Software developers integrate our API into their applications to provide text formatting features without building the functionality from scratch.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 style="font-size: 2.5rem; margin-bottom: 24px;">Ready to Get Started?</h2>
+                <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Transform your text formatting workflow with our professional tools and services. Start using our free generator now or explore our premium solutions.
+                </p>
+                <a href="/" class="cta-button">Try the Free Generator</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Bold Text Generator</h4>
+                    <p>Free online tool for converting regular text to bold unicode characters. Perfect for social media, messaging apps, and anywhere you need styled text.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Generator</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/services.html">Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/privacy.html#terms">Terms of Service</a></li>
+                        <li><a href="/privacy.html#cookies">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bold Text Generator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/common.js"></script>
+</body>
+</html>
