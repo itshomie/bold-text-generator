@@ -1,202 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-15VGH4M68B"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-15VGH4M68B');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-15VGH4M68B');
     </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Bold Text Generator Tips & Guides</title>
-    <meta name="description" content="Learn about unicode text formatting, bold fonts for social media, and typography tips. Expert guides on using bold text generator effectively.">
-    <meta name="keywords" content="bold text blog, unicode guides, text formatting tips, typography tutorials, social media text">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Bold Text Generator Blog">
-    <meta property="og:description" content="Expert guides and tips on text formatting and unicode">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://boldtextgenerator.me/blog">
-    
-    <!-- Canonical URL -->
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme = savedTheme || (systemDark ? 'dark' : 'light');
+        } catch (error) {
+            document.documentElement.dataset.theme = 'light';
+        }
+    </script>
+
+    <title>Bold Text Guides - Unicode, Instagram and Social Media</title>
+    <meta name="description" content="Practical guides to Unicode bold text, Instagram formatting, accessibility, and choosing between Unicode, Markdown, HTML and native bold controls.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#2457d6">
     <link rel="canonical" href="https://boldtextgenerator.me/blog">
-    
-    <!-- Favicon -->
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bold Text Generator">
+    <meta property="og:title" content="Bold Text Guides">
+    <meta property="og:description" content="Accurate, practical guidance for copyable Unicode text.">
+    <meta property="og:url" content="https://boldtextgenerator.me/blog">
+    <meta property="og:image" content="https://boldtextgenerator.me/assets/og-image.png">
+    <meta property="og:image:alt" content="Bold Text Generator guide collection">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bold Text Guides">
+    <meta name="twitter:description" content="Accurate, practical guidance for copyable Unicode text.">
+    <meta name="twitter:image" content="https://boldtextgenerator.me/assets/og-image.png">
+
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/blog.css">
-    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="/css/main.css?v=20260710-1">
+    <link rel="stylesheet" href="/css/blog.css?v=20260710-1">
+    <link rel="stylesheet" href="/css/responsive.css?v=20260710-1">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Bold Text Guides",
+        "url": "https://boldtextgenerator.me/blog",
+        "description": "Practical guides to Unicode bold text, social media formatting and accessibility.",
+        "inLanguage": "en-US",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Bold Text Generator",
+            "url": "https://boldtextgenerator.me/"
+        }
+    }
+    </script>
 </head>
 <body>
-    <!-- Header -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <header class="site-header">
-        <nav class="container">
-            <div class="nav-wrapper">
-                <a href="/" class="logo">
-                    <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#0066FF;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect width="40" height="40" rx="8" fill="url(#logoGradient)"/>
-                        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="24" font-weight="bold">B</text>
-                    </svg>
-                    <span class="logo-text">Bold Text Generator</span>
-                </a>
-                <ul class="nav-menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/blog.html" class="active">Blog</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/privacy.html">Privacy</a></li>
-                </ul>
-                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
-                <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+        <div class="container nav-shell">
+            <a class="brand" href="/" aria-label="Bold Text Generator home">
+                <img class="brand-mark" src="/assets/logo.svg" width="38" height="38" alt="">
+                <span>Bold Text Generator</span>
+            </a>
+            <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+                <a href="/#generator">Generator</a>
+                <a href="/#how-it-works">How it works</a>
+                <a href="/blog" aria-current="page">Guides</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" type="button" aria-label="Switch color theme" aria-pressed="false"><span data-theme-label>Theme</span></button>
+                <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false"><span>Menu</span></button>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Blog Hero -->
-        <section class="blog-hero">
+    <main class="main-content" id="main-content">
+        <header class="page-hero">
             <div class="container">
-                <h1>Bold Text Generator Blog</h1>
-                <p class="blog-subtitle">Tips, guides, and insights on text formatting, unicode, and typography for social media</p>
+                <h1>Bold Text Guides</h1>
+                <p>Use copyable Unicode text with fewer surprises. These guides explain the method, the limits, and the best alternative when real formatting is available.</p>
             </div>
-        </section>
+        </header>
 
-        <!-- Blog Posts Grid -->
-        <section class="blog-posts">
+        <section class="blog-index" aria-labelledby="latest-guides">
             <div class="container">
-                <div class="posts-grid">
-                    <!-- Blog Post 1 -->
-                    <article class="blog-card">
-                        <div class="blog-card-content">
-                            <div class="blog-meta">
-                                <span class="blog-date">January 25, 2024</span>
-                                <span class="blog-reading-time">12 min read</span>
-                            </div>
-                            <h2><a href="/blog/social-media-bold-marketing.html">Social Media Bold Text Marketing: Boost Engagement</a></h2>
-                            <p>Learn how bold text increases social media engagement by 47%. Marketing strategies, A/B testing tips, and platform-specific tactics for Twitter, Instagram, LinkedIn.</p>
-                            <a href="/blog/social-media-bold-marketing.html" class="read-more">Read More →</a>
+                <header class="section-heading">
+                    <h2 id="latest-guides">Start with the question you have</h2>
+                    <p>Each guide covers a distinct task. There are no invented performance claims or placeholder articles.</p>
+                </header>
+
+                <div class="post-list">
+                    <article class="post-card">
+                        <p class="post-meta"><time datetime="2026-07-10">Updated July 10, 2026</time><br>Instagram guide</p>
+                        <div>
+                            <h2><a href="/blog/instagram-bold-text-guide">How to Use Bold Text on Instagram</a></h2>
+                            <p>Make a readable bio, caption, comment, or Story label and test it before publishing.</p>
                         </div>
+                        <a class="post-link" href="/blog/instagram-bold-text-guide">Read guide →</a>
                     </article>
 
-                    <!-- Blog Post 2 -->
-                    <article class="blog-card">
-                        <div class="blog-card-content">
-                            <div class="blog-meta">
-                                <span class="blog-date">January 22, 2024</span>
-                                <span class="blog-reading-time">10 min read</span>
-                            </div>
-                            <h2><a href="/blog/unicode-text-styles-explained.html">Unicode Text Styles Explained: The Technology Behind Bold Text</a></h2>
-                            <p>Deep dive into Unicode Mathematical Alphanumeric Symbols, UTF-16 encoding, and how bold text generators work. Technical guide for developers and curious users.</p>
-                            <a href="/blog/unicode-text-styles-explained.html" class="read-more">Read More →</a>
+                    <article class="post-card">
+                        <p class="post-meta"><time datetime="2026-07-10">Updated July 10, 2026</time><br>Cross-platform guide</p>
+                        <div>
+                            <h2><a href="/blog/social-media-bold-marketing">Bold Text for Social Media</a></h2>
+                            <p>Choose between a Unicode generator, Markdown, native controls, or HTML and CSS.</p>
                         </div>
+                        <a class="post-link" href="/blog/social-media-bold-marketing">Read guide →</a>
                     </article>
 
-                    <!-- Blog Post 3 -->
-                    <article class="blog-card">
-                        <div class="blog-card-content">
-                            <div class="blog-meta">
-                                <span class="blog-date">January 20, 2024</span>
-                                <span class="blog-reading-time">8 min read</span>
-                            </div>
-                            <h2><a href="/blog/instagram-bold-text-guide.html">How to Use Bold Text on Instagram: Complete Guide 2024</a></h2>
-                            <p>Learn how to use bold text on Instagram to boost engagement. Complete guide covering bio optimization, stories, captions, and more. Free bold text generator included.</p>
-                            <a href="/blog/instagram-bold-text-guide.html" class="read-more">Read More →</a>
+                    <article class="post-card">
+                        <p class="post-meta"><time datetime="2026-07-10">Updated July 10, 2026</time><br>Technical guide</p>
+                        <div>
+                            <h2><a href="/blog/unicode-text-guide">How Unicode Bold Text Works</a></h2>
+                            <p>Understand mathematical alphanumeric characters, compatibility, search, and screen reader limits.</p>
                         </div>
-                    </article>
-
-                    <!-- Blog Post 4 -->
-                    <article class="blog-card">
-                        <div class="blog-card-content">
-                            <div class="blog-meta">
-                                <span class="blog-date">January 15, 2024</span>
-                                <span class="blog-reading-time">8 min read</span>
-                            </div>
-                            <h2><a href="/blog/unicode-text-guide.html">Complete Guide to Unicode Text Styling</a></h2>
-                            <p>Discover how Unicode enables bold text formatting across platforms. Learn about different Unicode blocks and how they create styled text that works everywhere.</p>
-                            <a href="/blog/unicode-text-guide.html" class="read-more">Read More →</a>
-                        </div>
+                        <a class="post-link" href="/blog/unicode-text-guide">Read guide →</a>
                     </article>
                 </div>
 
-                <!-- Pagination -->
-                <div class="pagination">
-                    <button class="pagination-btn active">1</button>
-                    <button class="pagination-btn">2</button>
-                    <button class="pagination-btn">3</button>
-                    <button class="pagination-btn pagination-next">Next →</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter Section -->
-        <section class="newsletter-section">
-            <div class="container">
-                <div class="newsletter-box">
-                    <h2>Stay Updated with Text Formatting Tips</h2>
-                    <p>Get the latest unicode tricks and typography guides delivered to your inbox</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
+                <aside class="blog-cta">
+                    <div>
+                        <h2>Need the text, not another article?</h2>
+                        <p>Open the generator and compare the most useful bold styles first.</p>
+                    </div>
+                    <a class="button button-primary" href="/#generator">Open generator</a>
+                </aside>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>About Bold Text Generator</h4>
-                    <p>Free online tool for converting regular text to bold unicode characters. Perfect for social media, messaging apps, and anywhere you need styled text.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="/">Generator</a></li>
-                        <li><a href="/blog.html">Blog</a></li>
-                        <li><a href="/services.html">Services</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="/privacy.html">Privacy Policy</a></li>
-                        <li><a href="/privacy.html#terms">Terms of Service</a></li>
-                        <li><a href="/privacy.html#cookies">Cookie Policy</a></li>
-                    </ul>
-                </div>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a class="brand" href="/" aria-label="Bold Text Generator home">
+                    <img class="brand-mark" src="/assets/logo.svg" width="34" height="34" alt="">
+                    <span>Bold Text Generator</span>
+                </a>
+                <p>A focused tool for creating and understanding copyable Unicode text styles.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Bold Text Generator. All rights reserved.</p>
+            <div>
+                <h2>Use the tool</h2>
+                <ul class="footer-links">
+                    <li><a href="/#generator">Generator</a></li>
+                    <li><a href="/#how-it-works">How it works</a></li>
+                    <li><a href="/services">About this tool</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Learn</h2>
+                <ul class="footer-links">
+                    <li><a href="/blog">Guides</a></li>
+                    <li><a href="/blog/instagram-bold-text-guide">Instagram bold text</a></li>
+                    <li><a href="/blog/unicode-text-guide">Unicode text guide</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Legal</h2>
+                <ul class="footer-links">
+                    <li><a href="/privacy">Privacy policy</a></li>
+                    <li><a href="/privacy#terms">Terms of use</a></li>
+                    <li><a href="/privacy#cookies">Cookie policy</a></li>
+                </ul>
             </div>
         </div>
+        <div class="container footer-bottom"><p>© 2026 Bold Text Generator.</p></div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="/js/common.js"></script>
+    <script src="/js/common.js?v=20260710-1" defer></script>
 </body>
 </html>

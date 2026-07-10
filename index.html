@@ -1,301 +1,385 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-15VGH4M68B"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-15VGH4M68B');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-15VGH4M68B');
     </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bold Text Generator - Unicode Font Converter Online</title>
-    <meta name="description" content="Free bold text generator converts normal text to bold unicode characters. Create stylish bold fonts for social media, Instagram, Twitter instantly.">
-    <meta name="keywords" content="bold text generator, unicode bold text, bold font generator, text converter, bold letters, social media text, instagram fonts, twitter bold text, facebook stylish text, whatsapp formatting">
-    
-    <!-- Additional SEO Meta Tags -->
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="author" content="Bold Text Generator">
-    <meta name="publisher" content="Bold Text Generator">
-    <meta name="copyright" content="2024 Bold Text Generator">
-    <meta name="rating" content="general">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Bold Text Generator - Unicode Font Converter">
-    <meta property="og:description" content="Convert your text to bold unicode characters instantly. Perfect for social media posts.">
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme = savedTheme || (systemDark ? 'dark' : 'light');
+        } catch (error) {
+            document.documentElement.dataset.theme = 'light';
+        }
+    </script>
+
+    <title>Bold Text Generator - Copy and Paste Unicode Bold Text</title>
+    <meta name="description" content="Turn plain text into copyable Unicode bold text. Preview 30 styles, copy in one click, and learn where styled text works best.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#2457d6">
+
+    <link rel="canonical" href="https://boldtextgenerator.me/">
+    <link rel="alternate" hreflang="en-US" href="https://boldtextgenerator.me/">
+    <link rel="alternate" hreflang="x-default" href="https://boldtextgenerator.me/">
+
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://boldtextgenerator.me">
+    <meta property="og:site_name" content="Bold Text Generator">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Bold Text Generator">
+    <meta property="og:description" content="Create copyable Unicode bold text in your browser.">
+    <meta property="og:url" content="https://boldtextgenerator.me/">
     <meta property="og:image" content="https://boldtextgenerator.me/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Bold Text Generator">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card Meta Tags -->
+    <meta property="og:image:alt" content="Bold Text Generator with examples of copyable Unicode text">
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bold Text Generator - Unicode Font Converter">
-    <meta name="twitter:description" content="Create bold unicode text for social media">
+    <meta name="twitter:title" content="Bold Text Generator">
+    <meta name="twitter:description" content="Create copyable Unicode bold text in your browser.">
     <meta name="twitter:image" content="https://boldtextgenerator.me/assets/og-image.png">
-    <meta name="twitter:image:alt" content="Bold Text Generator Logo">
-    <meta name="twitter:site" content="@boldtextgen">
-    <meta name="twitter:creator" content="@boldtextgen">
-    
-    <!-- Canonical URL and Language -->
-    <link rel="canonical" href="https://boldtextgenerator.me">
-    <link rel="alternate" hreflang="en" href="https://boldtextgenerator.me">
-    <link rel="alternate" hreflang="x-default" href="https://boldtextgenerator.me">
-    
-    <!-- Preload and Performance -->
-    <link rel="preload" as="style" href="/css/main.css">
-    <link rel="preload" as="style" href="/css/generator.css">
-    <link rel="preload" as="script" href="/js/generator.js">
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
-    <link rel="preconnect" href="https://www.google-analytics.com">
-    
-    <!-- Favicon and App Icons -->
+
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#0066FF">
-    
-    <!-- Google Fonts removed to allow better Unicode character support through system fonts -->
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/generator.css">
-    <link rel="stylesheet" href="/css/responsive.css">
-    
-    <style>
-        /* Use system fonts for better Unicode support */
-        .unicode-text {
-            font-family: system-ui, -apple-system, "Segoe UI Symbol", "Apple Symbols", 
-                         "Cambria Math", "Arial Unicode MS", sans-serif;
-        }
-    </style>
-    
-    <!-- Structured Data -->
+    <link rel="stylesheet" href="/css/main.css?v=20260710-1">
+    <link rel="stylesheet" href="/css/generator.css?v=20260710-1">
+    <link rel="stylesheet" href="/css/responsive.css?v=20260710-1">
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Bold Text Generator",
-        "alternateName": "Unicode Bold Font Converter",
-        "url": "https://boldtextgenerator.me",
-        "logo": "https://boldtextgenerator.me/assets/logo.svg",
-        "sameAs": [
-            "https://twitter.com/boldtextgen",
-            "https://facebook.com/boldtextgen"
-        ],
-        "description": "Free online bold text generator for creating unicode bold fonts. Convert normal text to 30+ stylish unicode text styles instantly.",
+        "url": "https://boldtextgenerator.me/",
+        "description": "A browser-based tool that converts plain Latin letters and numbers into copyable Unicode text styles.",
         "applicationCategory": "UtilityApplication",
-        "operatingSystem": "All",
-        "browserRequirements": "Requires JavaScript. Works on all modern browsers.",
-        "softwareVersion": "2.0",
+        "operatingSystem": "Any operating system with a modern web browser",
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true,
         "offers": {
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "1250",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
-        "creator": {
-            "@type": "Organization",
-            "name": "Bold Text Generator",
-            "url": "https://boldtextgenerator.me"
-        }
-    }
-    </script>
-    
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://boldtextgenerator.me"
-            }
+        "featureList": [
+            "Live Unicode text conversion",
+            "Thirty text styles",
+            "One-click copy",
+            "Plain text restoration"
         ]
     }
     </script>
 </head>
 <body>
-    <!-- Header -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <header class="site-header">
-        <nav class="container">
-            <div class="nav-wrapper">
-                <a href="/" class="logo">
-                    <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#0066FF;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect width="40" height="40" rx="8" fill="url(#logoGradient)"/>
-                        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="24" font-weight="bold">B</text>
-                    </svg>
-                    <span class="logo-text">Bold Text Generator</span>
-                </a>
-                <ul class="nav-menu">
-                    <li><a href="/" class="active">Home</a></li>
-                    <li><a href="/blog.html">Blog</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/privacy.html">Privacy</a></li>
-                </ul>
-                <button class="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
+        <div class="container nav-shell">
+            <a class="brand" href="/" aria-label="Bold Text Generator home">
+                <img class="brand-mark" src="/assets/logo.svg" width="38" height="38" alt="">
+                <span>Bold Text Generator</span>
+            </a>
+
+            <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+                <a href="/#generator" aria-current="page">Generator</a>
+                <a href="/#how-it-works">How it works</a>
+                <a href="/blog">Guides</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">
+                    <span data-theme-label>Theme</span>
                 </button>
-                <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false">
+                    <span>Menu</span>
                 </button>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <h1>Bold Text Generator - Create Stylish Unicode Bold Fonts</h1>
-                <p class="hero-subtitle">Transform your regular text into eye-catching bold unicode characters instantly. Perfect for social media posts, bios, and messages.</p>
+    <main class="main-content" id="main-content">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <h1 id="hero-title">Bold Text Generator</h1>
+                    <p>Type once, copy a bold Unicode style, and paste it into bios, captions, or messages.</p>
+                    <a class="button button-primary" href="#generator">Start typing</a>
+                </div>
+
+                <figure class="hero-preview" aria-label="Plain and Unicode bold text example">
+                    <div class="preview-row">
+                        <span>Plain text</span>
+                        <strong>Make this bold</strong>
+                    </div>
+                    <div class="preview-row preview-row-featured">
+                        <span>Unicode bold</span>
+                        <strong class="unicode-sample">𝗠𝗮𝗸𝗲 𝘁𝗵𝗶𝘀 𝗯𝗼𝗹𝗱</strong>
+                    </div>
+                    <figcaption>Styled characters you can copy as text.</figcaption>
+                </figure>
             </div>
         </section>
 
-        <!-- Generator Tool -->
-        <section class="generator-section">
+        <section class="generator-section" id="generator" aria-labelledby="generator-title">
             <div class="container">
-                <div class="generator-card">
-                    <div class="input-area">
-                        <label for="input-text" class="input-label">Enter Your Text:</label>
-                        <textarea 
-                            id="input-text" 
-                            class="text-input" 
-                            placeholder="Type or paste your text here..."
-                            rows="4"
-                            autofocus
-                        ></textarea>
+                <header class="section-heading">
+                    <h2 id="generator-title">Make your text bold</h2>
+                    <p>Results update as you type. Characters without a matching style stay unchanged.</p>
+                </header>
+
+                <div class="generator-shell">
+                    <div class="input-panel">
+                        <label class="input-label" for="input-text">Text to convert</label>
+                        <textarea id="input-text" class="text-input" rows="4" maxlength="500" placeholder="Type or paste text here" spellcheck="true">Make this bold</textarea>
                         <div class="input-controls">
-                            <span class="char-count">0 characters</span>
-                            <button class="clear-btn" aria-label="Clear text">Clear</button>
+                            <span class="char-count" aria-live="polite">14 / 500 characters</span>
+                            <div class="input-buttons">
+                                <button class="text-button sample-btn" type="button">Use sample</button>
+                                <button class="text-button plain-btn" type="button">Make plain</button>
+                                <button class="text-button clear-btn" type="button">Clear</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="output-area">
-                        <h2 class="output-title">Bold Text Styles:</h2>
-                        <div class="styles-grid" id="styles-output">
-                            <!-- Styles will be generated dynamically -->
-                            <div class="style-placeholder">
-                                <p>Your bold text styles will appear here...</p>
+                    <div class="results-panel">
+                        <div class="results-toolbar">
+                            <div class="style-filters" aria-label="Filter text styles">
+                                <button class="filter-button is-active" type="button" data-filter="bold" aria-pressed="true">Bold styles</button>
+                                <button class="filter-button" type="button" data-filter="all" aria-pressed="false">All 30 styles</button>
                             </div>
+                            <span class="result-count">8 results</span>
                         </div>
+
+                        <h3 class="visually-hidden">Copy a Unicode text style</h3>
+                        <div class="styles-grid" id="styles-output" aria-live="polite" aria-busy="false">
+                            <article class="unicode-card">
+                                <div class="unicode-info">
+                                    <span class="unicode-name">Bold</span>
+                                    <span class="unicode-text">𝐌𝐚𝐤𝐞 𝐭𝐡𝐢𝐬 𝐛𝐨𝐥𝐝</span>
+                                </div>
+                                <button class="copy-btn" type="button">Copy Bold</button>
+                            </article>
+                            <article class="unicode-card">
+                                <div class="unicode-info">
+                                    <span class="unicode-name">Sans Bold</span>
+                                    <span class="unicode-text">𝗠𝗮𝗸𝗲 𝘁𝗵𝗶𝘀 𝗯𝗼𝗹𝗱</span>
+                                </div>
+                                <button class="copy-btn" type="button">Copy Sans Bold</button>
+                            </article>
+                        </div>
+                        <noscript>
+                            <p class="noscript-message">JavaScript is required to generate and copy your own text styles.</p>
+                        </noscript>
+                    </div>
+                </div>
+
+                <p class="privacy-note">Conversion happens in this browser. The text in the box is not sent to our server.</p>
+                <div class="copy-status visually-hidden" role="status" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="steps-section" id="how-it-works" aria-labelledby="steps-title">
+            <div class="container">
+                <header class="section-heading">
+                    <h2 id="steps-title">How it works</h2>
+                    <p>The tool swaps standard Latin characters for visually styled Unicode characters.</p>
+                </header>
+
+                <ol class="steps-list">
+                    <li>
+                        <span class="step-number">1</span>
+                        <div>
+                            <h3>Enter text</h3>
+                            <p>Type a short label, caption, username, or message.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-number">2</span>
+                        <div>
+                            <h3>Preview styles</h3>
+                            <p>Compare focused bold choices or open all decorative styles.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-number">3</span>
+                        <div>
+                            <h3>Copy and check</h3>
+                            <p>Paste the result where you need it, then preview it on that platform.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="decision-section" aria-labelledby="decision-title">
+            <div class="container decision-layout">
+                <header class="section-heading">
+                    <h2 id="decision-title">Use the right kind of bold</h2>
+                    <p>Unicode bold is useful when an app has no formatting button. It is not the best choice everywhere.</p>
+                </header>
+
+                <div class="comparison-table" role="table" aria-label="Bold text method comparison">
+                    <div class="comparison-row comparison-head" role="row">
+                        <span role="columnheader">Method</span>
+                        <span role="columnheader">Best for</span>
+                        <span role="columnheader">Example</span>
+                    </div>
+                    <div class="comparison-row" role="row">
+                        <strong role="cell">Unicode characters</strong>
+                        <span role="cell">Bios, labels, captions, and short messages without formatting controls</span>
+                        <code role="cell">𝗕𝗼𝗹𝗱</code>
+                    </div>
+                    <div class="comparison-row" role="row">
+                        <strong role="cell">Markdown</strong>
+                        <span role="cell">Apps such as Discord or Reddit when their editor supports Markdown</span>
+                        <code role="cell">**Bold**</code>
+                    </div>
+                    <div class="comparison-row" role="row">
+                        <strong role="cell">HTML and CSS</strong>
+                        <span role="cell">Web pages where meaning, accessibility, and search matter</span>
+                        <code role="cell">&lt;strong&gt;Bold&lt;/strong&gt;</code>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEO Content Section -->
-        <section class="content-section">
+        <section class="compatibility-section" aria-labelledby="compatibility-title">
+            <div class="container compatibility-layout">
+                <div>
+                    <header class="section-heading">
+                        <h2 id="compatibility-title">What to expect after you paste</h2>
+                        <p>Unicode support depends on the app, operating system, and available fonts.</p>
+                    </header>
+
+                    <ul class="check-list">
+                        <li>Latin letters and many numbers have styled equivalents.</li>
+                        <li>Emoji, punctuation, and unsupported letters usually stay unchanged.</li>
+                        <li>Some apps may count styled characters differently or show missing-glyph boxes.</li>
+                        <li>Search, spellcheck, and text-to-speech tools may read styled text differently.</li>
+                    </ul>
+                </div>
+
+                <aside class="callout" aria-labelledby="accessibility-title">
+                    <h3 id="accessibility-title">Keep important text readable</h3>
+                    <p>Unicode mathematical letters are not semantic bold formatting. Use them for short emphasis, not full paragraphs or essential instructions.</p>
+                    <a href="/blog/unicode-text-guide">Read the Unicode guide</a>
+                </aside>
+            </div>
+        </section>
+
+        <section class="guides-section" aria-labelledby="guides-title">
             <div class="container">
-                <article class="seo-content">
-                    <h2>About Our Bold Text Generator</h2>
-                    <p>Welcome to the most comprehensive bold text generator available online. This powerful tool transforms ordinary text into stunning bold unicode characters that work across all platforms and devices. Whether you're creating content for Instagram, Twitter, Facebook, or any other social media platform, our bold text generator ensures your message stands out from the crowd.</p>
+                <header class="section-heading">
+                    <h2 id="guides-title">Practical bold text guides</h2>
+                    <p>Learn how styled text behaves before adding it to a profile or post.</p>
+                </header>
 
-                    <h3>How Does the Bold Text Generator Work?</h3>
-                    <p>Our bold text generator utilizes Unicode's extensive character set to create text that appears bold without relying on HTML or CSS formatting. Unicode provides multiple mathematical alphanumeric symbols that resemble bold letters, allowing you to create text that maintains its bold appearance when copied and pasted anywhere. This innovative approach means your bold text will display correctly on social media platforms, messaging apps, and even in plain text documents.</p>
+                <div class="guide-list">
+                    <a href="/blog/instagram-bold-text-guide">
+                        <span>
+                            <strong>Bold text on Instagram</strong>
+                            <small>Where to paste it and how to keep a bio or caption readable.</small>
+                        </span>
+                        <span aria-hidden="true">Read →</span>
+                    </a>
+                    <a href="/blog/social-media-bold-marketing">
+                        <span>
+                            <strong>Bold text for social media</strong>
+                            <small>Choose between Unicode, Markdown, and native formatting.</small>
+                        </span>
+                        <span aria-hidden="true">Read →</span>
+                    </a>
+                    <a href="/blog/unicode-text-guide">
+                        <span>
+                            <strong>How Unicode text styles work</strong>
+                            <small>Understand character mapping, limits, and accessibility.</small>
+                        </span>
+                        <span aria-hidden="true">Read →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-                    <p>The technology behind our bold text generator involves mapping regular ASCII characters to their corresponding bold Unicode equivalents. When you type or paste text into our generator, it instantly converts each character to its bold counterpart from various Unicode blocks, including Mathematical Alphanumeric Symbols, which contains both serif and sans-serif bold variations. This process happens in real-time, giving you immediate access to multiple bold text styles.</p>
+        <section class="faq-section" aria-labelledby="faq-title">
+            <div class="container faq-layout">
+                <header class="section-heading">
+                    <h2 id="faq-title">Frequently asked questions</h2>
+                    <p>Quick answers about copyable bold text.</p>
+                </header>
 
-                    <h3>Why Use a Bold Text Generator?</h3>
-                    <p>In today's digital communication landscape, making your text stand out is crucial for capturing attention. Our bold text generator provides several advantages that make it an essential tool for content creators, marketers, and anyone looking to enhance their online presence. Bold text naturally draws the eye, making it perfect for highlighting important information, creating eye-catching social media posts, or adding emphasis to your messages.</p>
-
-                    <p>Social media platforms often limit formatting options, but our bold text generator bypasses these restrictions by using Unicode characters that are treated as regular text. This means you can use bold text in places where traditional formatting isn't supported, such as Instagram bios, Twitter posts, YouTube comments, and WhatsApp messages. The bold text generator gives you creative freedom to express yourself with styled text anywhere online.</p>
-
-                    <h3>Features of Our Bold Text Generator</h3>
-                    <p>Our bold text generator offers an extensive collection of bold text styles to suit every need. From classic mathematical bold to decorative options like circled letters and squared characters, you'll find the perfect style for your content. Each style is carefully selected to ensure maximum compatibility across different platforms while maintaining visual appeal. The generator includes serif bold, sans-serif bold, monospace bold, script bold, and many more unique variations.</p>
-
-                    <p>The user interface of our bold text generator is designed for simplicity and efficiency. Simply type or paste your text, and instantly see it transformed into multiple bold styles. Each generated style can be copied with a single click, making the process quick and seamless. The tool works entirely in your browser, ensuring your privacy is protected as no text is sent to any server. This client-side processing also means the bold text generator works instantly without any delays.</p>
-
-                    <h3>Who Benefits from Using Bold Text Generator?</h3>
-                    <p>Content creators and social media influencers use our bold text generator to make their posts more engaging and visually appealing. Marketers leverage bold text to highlight key selling points and calls-to-action in their campaigns. Students and educators use the tool to emphasize important points in digital documents and presentations. Business professionals employ bold text to make their emails and messages more impactful. Essentially, anyone who wants to add emphasis and style to their digital text can benefit from our bold text generator.</p>
-
-                    <h3>Technical Advantages</h3>
-                    <p>Our bold text generator is built with modern web technologies to ensure optimal performance across all devices. The tool is fully responsive, working seamlessly on desktops, tablets, and smartphones. It supports all major browsers and requires no downloads or installations. The bold text generator loads quickly and operates smoothly, even when processing large amounts of text. We've optimized every aspect of the tool to provide the best possible user experience.</p>
-
-                    <h3>Start Using Bold Text Generator Today</h3>
-                    <p>Transform your plain text into attention-grabbing bold styles with our free bold text generator. Whether you're crafting the perfect social media post, designing a unique bio, or simply want to add emphasis to your messages, our tool provides everything you need. The bold text generator is completely free to use, requires no registration, and is available 24/7. Start creating stunning bold text now and see the difference it makes in your digital communication.</p>
-                </article>
+                <div class="faq-list">
+                    <details>
+                        <summary>Is this a real bold font?</summary>
+                        <p>No. The tool replaces ordinary letters with separate Unicode characters that look bold. It does not apply a font file or CSS style.</p>
+                    </details>
+                    <details>
+                        <summary>Why does a letter stay normal?</summary>
+                        <p>Not every language character, accent, symbol, or digit has an equivalent in every Unicode style. Unsupported characters are preserved.</p>
+                    </details>
+                    <details>
+                        <summary>Can I use the result on Instagram or TikTok?</summary>
+                        <p>Often, yes. Paste a short test first because display and character limits can change between apps and devices.</p>
+                    </details>
+                    <details>
+                        <summary>Does the site store what I type?</summary>
+                        <p>No. Conversion runs locally in your browser. Analytics can record page usage, but the generator does not send the text you enter.</p>
+                    </details>
+                    <details>
+                        <summary>How do I remove Unicode styling?</summary>
+                        <p>Paste the styled text into the input and select Make plain. Characters recognized by this tool are restored to standard text.</p>
+                    </details>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>About Bold Text Generator</h4>
-                    <p>Free online tool for converting regular text to bold unicode characters. Perfect for social media, messaging apps, and anywhere you need styled text.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="/">Generator</a></li>
-                        <li><a href="/blog.html">Blog</a></li>
-                        <li><a href="/services.html">Services</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="/privacy.html">Privacy Policy</a></li>
-                        <li><a href="/privacy.html#terms">Terms of Service</a></li>
-                        <li><a href="/privacy.html#cookies">Cookie Policy</a></li>
-                    </ul>
-                </div>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a class="brand" href="/" aria-label="Bold Text Generator home">
+                    <img class="brand-mark" src="/assets/logo.svg" width="34" height="34" alt="">
+                    <span>Bold Text Generator</span>
+                </a>
+                <p>A focused tool for creating and understanding copyable Unicode text styles.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Bold Text Generator. All rights reserved.</p>
+            <div>
+                <h2>Use the tool</h2>
+                <ul class="footer-links">
+                    <li><a href="/#generator">Generator</a></li>
+                    <li><a href="/#how-it-works">How it works</a></li>
+                    <li><a href="/services">About this tool</a></li>
+                </ul>
             </div>
+            <div>
+                <h2>Learn</h2>
+                <ul class="footer-links">
+                    <li><a href="/blog">Guides</a></li>
+                    <li><a href="/blog/instagram-bold-text-guide">Instagram bold text</a></li>
+                    <li><a href="/blog/unicode-text-guide">Unicode text guide</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Legal</h2>
+                <ul class="footer-links">
+                    <li><a href="/privacy">Privacy policy</a></li>
+                    <li><a href="/privacy#terms">Terms of use</a></li>
+                    <li><a href="/privacy#cookies">Cookie policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2026 Bold Text Generator.</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="/js/generator.js" defer></script>
-    <script src="/js/common.js" defer></script>
-    
-    <!-- Google Analytics (Optional - Replace GA_MEASUREMENT_ID) -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
-    -->
+    <script src="/js/generator.js?v=20260710-1" defer></script>
+    <script src="/js/common.js?v=20260710-1" defer></script>
 </body>
 </html>

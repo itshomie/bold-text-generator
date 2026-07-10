@@ -1,0 +1,12 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#f4f7fb"/>
+  <rect x="58" y="58" width="1084" height="514" rx="28" fill="#fefeff" stroke="#d6dfeb" stroke-width="2"/>
+  <rect x="94" y="94" width="70" height="70" rx="15" fill="#2457d6"/>
+  <text x="129" y="143" text-anchor="middle" fill="#f8faff" font-family="Arial, sans-serif" font-size="44" font-weight="700">B</text>
+  <text x="190" y="139" fill="#162136" font-family="Arial, sans-serif" font-size="28" font-weight="700">Bold Text Generator</text>
+  <text x="94" y="277" fill="#162136" font-family="Arial, sans-serif" font-size="66" font-weight="700">Make your text bold</text>
+  <text x="94" y="332" fill="#526078" font-family="Arial, sans-serif" font-size="28">Copy and paste Unicode styles in one click.</text>
+  <rect x="94" y="393" width="1012" height="124" rx="18" fill="#e6edff"/>
+  <text x="126" y="435" fill="#6f7c91" font-family="Arial, sans-serif" font-size="18" font-weight="700">UNICODE BOLD</text>
+  <text x="126" y="488" fill="#2457d6" font-family="Arial, 'Arial Unicode MS', sans-serif" font-size="42" font-weight="700">𝗠𝗮𝗸𝗲 𝘆𝗼𝘂𝗿 𝘁𝗲𝘅𝘁 𝗯𝗼𝗹𝗱</text>
+</svg>

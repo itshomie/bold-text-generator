@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-15VGH4M68B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-15VGH4M68B');
+    </script>
+    <title>Page Not Found | Bold Text Generator</title>
+    <meta name="description" content="The requested page could not be found. Return to the Bold Text Generator or browse the available guides.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#2457d6">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="stylesheet" href="/css/main.css?v=20260710-1">
+    <link rel="stylesheet" href="/css/blog.css?v=20260710-1">
+    <link rel="stylesheet" href="/css/responsive.css?v=20260710-1">
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme = savedTheme || (systemDark ? 'dark' : 'light');
+        } catch (error) {
+            document.documentElement.dataset.theme = 'light';
+        }
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a class="brand" href="/" aria-label="Bold Text Generator home">
+                <img class="brand-mark" src="/assets/logo.svg" width="38" height="38" alt="">
+                <span>Bold Text Generator</span>
+            </a>
+            <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+                <a href="/#generator">Generator</a>
+                <a href="/#how-it-works">How it works</a>
+                <a href="/blog">Guides</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" type="button" aria-label="Switch color theme" aria-pressed="false"><span data-theme-label>Theme</span></button>
+                <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false"><span>Menu</span></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="not-found" id="main-content">
+        <div class="container not-found-content">
+            <p class="not-found-code">404</p>
+            <h1>That page is not here</h1>
+            <p>The address may be outdated or typed incorrectly. The generator and the published guides are still available.</p>
+            <p>
+                <a class="button button-primary" href="/#generator">Open generator</a>
+                <a class="button button-secondary" href="/blog">Browse guides</a>
+            </p>
+        </div>
+    </main>
+
+    <script src="/js/common.js?v=20260710-1" defer></script>
+</body>
+</html>

@@ -461,211 +461,250 @@
         }
     };
 
-    // Get DOM elements
     const inputText = document.getElementById('input-text');
     const outputContainer = document.getElementById('styles-output');
     const charCount = document.querySelector('.char-count');
+    const resultCount = document.querySelector('.result-count');
+    const copyStatus = document.querySelector('.copy-status');
     const clearBtn = document.querySelector('.clear-btn');
+    const sampleBtn = document.querySelector('.sample-btn');
+    const plainBtn = document.querySelector('.plain-btn');
+    const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
 
-    // Convert text to Unicode style using object mapping
+    if (!inputText || !outputContainer || !charCount || !resultCount) return;
+
+    const SAMPLE_TEXT = 'Make this bold';
+    const MAX_LENGTH = Number(inputText.getAttribute('maxlength')) || 500;
+    const boldStyleNames = [
+        'mathBold',
+        'mathBoldItalic',
+        'sansBold',
+        'sansBoldItalic',
+        'scriptBold',
+        'frakturBold',
+        'gothicBold',
+        'doubleStruck'
+    ];
+    const effectMarks = new Set(['\u0332', '\u0336', '\u0305', '\u0307', '\u0303']);
+    const reverseMappings = new Map();
+    let activeFilter = 'bold';
+
+    Object.values(unicodeMappings).forEach(function (style) {
+        Object.entries(style.map).forEach(function (entry) {
+            const plainCharacter = entry[0];
+            const styledCharacter = entry[1];
+
+            if (styledCharacter !== plainCharacter && !reverseMappings.has(styledCharacter)) {
+                reverseMappings.set(styledCharacter, plainCharacter);
+            }
+        });
+    });
+
     function convertToUnicode(text, styleName) {
         if (!text) return text;
-        
+
         const style = unicodeMappings[styleName];
         if (!style) return text;
-        
-        // Special handling for combining character styles
-        if (styleName === 'underlined') {
-            return text.split('').map(char => char + '\u0332').join('');
+
+        const combiningMarks = {
+            underlined: '\u0332',
+            strikethrough: '\u0336',
+            overlined: '\u0305',
+            dotted: '\u0307',
+            wavy: '\u0303'
+        };
+
+        if (combiningMarks[styleName]) {
+            return Array.from(text).map(function (character) {
+                return /\s/.test(character) ? character : character + combiningMarks[styleName];
+            }).join('');
         }
-        if (styleName === 'strikethrough') {
-            return text.split('').map(char => char + '\u0336').join('');
-        }
-        if (styleName === 'overlined') {
-            return text.split('').map(char => char + '\u0305').join('');
-        }
-        if (styleName === 'dotted') {
-            return text.split('').map(char => char + '\u0307').join('');
-        }
-        if (styleName === 'wavy') {
-            return text.split('').map(char => char + '\u0303').join('');
-        }
-        
-        // Use object mapping for other styles
-        let result = '';
-        for (let char of text) {
-            // Check if the character exists in the mapping, otherwise keep original
-            result += style.map[char] || char;
-        }
-        
-        return result;
+
+        return Array.from(text).map(function (character) {
+            return style.map[character] || character;
+        }).join('');
     }
 
-    // Create Unicode style card
-    function createUnicodeCard(text, styleName, index) {
+    function normalizeToPlain(text) {
+        return Array.from(text).filter(function (character) {
+            return !effectMarks.has(character);
+        }).map(function (character) {
+            return reverseMappings.get(character) || character;
+        }).join('');
+    }
+
+    function getVisibleStyleNames() {
+        return activeFilter === 'all' ? Object.keys(unicodeMappings) : boldStyleNames;
+    }
+
+    function createUnicodeCard(text, styleName) {
         const style = unicodeMappings[styleName];
         const convertedText = convertToUnicode(text, styleName);
-        
-        const card = document.createElement('div');
+        const card = document.createElement('article');
+        const info = document.createElement('div');
+        const name = document.createElement('span');
+        const output = document.createElement('span');
+        const copyButton = document.createElement('button');
+
         card.className = 'unicode-card';
-        card.style.setProperty('--card-index', index);
-        
-        // Escape quotes in the converted text for the data attribute
-        const escapedText = convertedText.replace(/"/g, '&quot;');
-        
-        card.innerHTML = `
-            <div class="unicode-info">
-                <div class="unicode-name">${style.name}</div>
-            </div>
-            <div class="unicode-display">
-                <div class="unicode-text">${convertedText}</div>
-            </div>
-            <div class="unicode-actions">
-                <button class="copy-btn" data-text="${escapedText}">
-                    <span class="btn-text">Copy</span>
-                </button>
-            </div>
-        `;
-        
-        // Add copy functionality
-        const copyBtn = card.querySelector('.copy-btn');
-        copyBtn.addEventListener('click', function() {
-            // Unescape the text before copying
-            const textToCopy = this.dataset.text.replace(/&quot;/g, '"');
-            copyToClipboard(textToCopy, this);
+        info.className = 'unicode-info';
+        name.className = 'unicode-name';
+        output.className = 'unicode-text';
+        copyButton.className = 'copy-btn';
+        copyButton.type = 'button';
+
+        name.textContent = style.name;
+        output.textContent = convertedText;
+        copyButton.textContent = 'Copy ' + style.name;
+        copyButton.setAttribute('aria-label', 'Copy ' + style.name + ' text');
+
+        copyButton.addEventListener('click', function () {
+            copyToClipboard(convertedText, copyButton, style.name);
         });
-        
+
+        info.append(name, output);
+        card.append(info, copyButton);
         return card;
     }
 
-    // Copy to clipboard
-    function copyToClipboard(text, button) {
-        // Modern clipboard API
+    function copyToClipboard(text, button, styleName) {
         if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(() => {
-                showCopySuccess(button);
-            }).catch(() => {
-                fallbackCopy(text, button);
+            navigator.clipboard.writeText(text).then(function () {
+                showCopySuccess(button, styleName);
+            }).catch(function () {
+                fallbackCopy(text, button, styleName);
             });
-        } else {
-            fallbackCopy(text, button);
-        }
-    }
-
-    // Fallback copy method
-    function fallbackCopy(text, button) {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        
-        try {
-            document.execCommand('copy');
-            showCopySuccess(button);
-        } catch (err) {
-            console.error('Copy failed:', err);
-        }
-        
-        document.body.removeChild(textarea);
-    }
-
-    // Show copy success animation
-    function showCopySuccess(button) {
-        const originalText = button.querySelector('.btn-text').textContent;
-        button.classList.add('copied');
-        button.querySelector('.btn-text').textContent = 'Copied!';
-        
-        setTimeout(() => {
-            button.classList.remove('copied');
-            button.querySelector('.btn-text').textContent = originalText;
-        }, 2000);
-    }
-
-    // Generate all styles
-    function generateStyles() {
-        const text = inputText.value.trim();
-        
-        if (!text) {
-            outputContainer.innerHTML = `
-                <div class="style-placeholder">
-                    <p>Your bold text styles will appear here...</p>
-                </div>
-            `;
             return;
         }
-        
-        // Clear previous output
-        outputContainer.innerHTML = '';
-        
-        // Generate Unicode cards for all 20 styles
-        const styleNames = Object.keys(unicodeMappings);
-        styleNames.forEach((styleName, index) => {
-            setTimeout(() => {
-                const card = createUnicodeCard(text, styleName, index);
-                outputContainer.appendChild(card);
-            }, index * 30); // Stagger animation
-        });
+
+        fallbackCopy(text, button, styleName);
     }
 
-    // Update character count
-    function updateCharCount() {
-        const count = inputText.value.length;
-        charCount.textContent = `${count} character${count !== 1 ? 's' : ''}`;
-    }
+    function fallbackCopy(text, button, styleName) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
 
-    // Initialize
-    function init() {
-        // Input event listeners
-        inputText.addEventListener('input', () => {
-            updateCharCount();
-            generateStyles();
-        });
-
-        // Clear button
-        clearBtn.addEventListener('click', () => {
-            inputText.value = '';
-            updateCharCount();
-            generateStyles();
-            inputText.focus();
-        });
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            // Ctrl/Cmd + Enter to select all text
-            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                inputText.select();
+        try {
+            if (document.execCommand('copy')) {
+                showCopySuccess(button, styleName);
             }
-            // Escape to clear
-            if (e.key === 'Escape') {
-                inputText.value = '';
-                updateCharCount();
-                generateStyles();
-                inputText.focus();
-            }
-        });
-
-        // Initial state
-        updateCharCount();
-        
-        // Auto-focus input
-        inputText.focus();
-        
-        // Load example if empty
-        if (!inputText.value) {
-            inputText.value = 'Bold Text Generator';
-            updateCharCount();
-            generateStyles();
-            inputText.select();
+        } finally {
+            textarea.remove();
         }
     }
 
-    // Start the app
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
+    function showCopySuccess(button, styleName) {
+        button.classList.add('copied');
+        button.textContent = 'Copied';
+
+        if (copyStatus) {
+            copyStatus.textContent = styleName + ' text copied to the clipboard.';
+        }
+
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', 'copy_text_style', { style_name: styleName });
+        }
+
+        window.setTimeout(function () {
+            button.classList.remove('copied');
+            button.textContent = 'Copy ' + styleName;
+        }, 1600);
     }
+
+    function createPlaceholder() {
+        const placeholder = document.createElement('div');
+        const message = document.createElement('p');
+        placeholder.className = 'style-placeholder';
+        message.textContent = 'Enter text to preview the available styles.';
+        placeholder.appendChild(message);
+        return placeholder;
+    }
+
+    function renderStyles() {
+        const text = inputText.value;
+        const styleNames = getVisibleStyleNames();
+        const fragment = document.createDocumentFragment();
+
+        outputContainer.setAttribute('aria-busy', 'true');
+
+        if (!text.trim()) {
+            outputContainer.replaceChildren(createPlaceholder());
+            resultCount.textContent = '0 results';
+            outputContainer.setAttribute('aria-busy', 'false');
+            return;
+        }
+
+        styleNames.forEach(function (styleName) {
+            fragment.appendChild(createUnicodeCard(text, styleName));
+        });
+
+        outputContainer.replaceChildren(fragment);
+        resultCount.textContent = styleNames.length + ' results';
+        outputContainer.setAttribute('aria-busy', 'false');
+    }
+
+    function updateCharacterCount() {
+        const count = Array.from(inputText.value).length;
+        charCount.textContent = count + ' / ' + MAX_LENGTH + ' characters';
+    }
+
+    function updateInput(nextValue) {
+        inputText.value = nextValue;
+        updateCharacterCount();
+        renderStyles();
+    }
+
+    function setFilter(nextFilter) {
+        activeFilter = nextFilter === 'all' ? 'all' : 'bold';
+
+        filterButtons.forEach(function (button) {
+            const isActive = button.dataset.filter === activeFilter;
+            button.classList.toggle('is-active', isActive);
+            button.setAttribute('aria-pressed', String(isActive));
+        });
+
+        renderStyles();
+    }
+
+    inputText.addEventListener('input', function () {
+        updateCharacterCount();
+        renderStyles();
+    });
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function () {
+            updateInput('');
+            inputText.focus();
+        });
+    }
+
+    if (sampleBtn) {
+        sampleBtn.addEventListener('click', function () {
+            updateInput(SAMPLE_TEXT);
+            inputText.focus();
+            inputText.select();
+        });
+    }
+
+    if (plainBtn) {
+        plainBtn.addEventListener('click', function () {
+            updateInput(normalizeToPlain(inputText.value));
+            inputText.focus();
+        });
+    }
+
+    filterButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            setFilter(button.dataset.filter);
+        });
+    });
+
+    updateCharacterCount();
+    renderStyles();
 
 })();

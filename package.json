@@ -1,0 +1,11 @@
+{
+  "name": "bold-text-generator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-site.mjs",
+    "check:site": "node scripts/check-site.mjs",
+    "test": "node scripts/check-site.mjs"
+  }
+}

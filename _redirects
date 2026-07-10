@@ -1,0 +1,11 @@
+# Consolidate the overlapping Unicode articles into one canonical guide.
+/blog/unicode-text-styles-explained.html  /blog/unicode-text-guide                 301
+/blog/unicode-text-styles-explained       /blog/unicode-text-guide                 301
+
+# Repair legacy related-article URLs that previously fell through to the homepage.
+/blog/social-media-bold.html               /blog/social-media-bold-marketing        301
+/blog/social-media-bold                    /blog/social-media-bold-marketing        301
+/blog/instagram-typography.html            /blog/instagram-bold-text-guide          301
+/blog/instagram-typography                 /blog/instagram-bold-text-guide          301
+/blog/unicode-history.html                 /blog/unicode-text-guide                 301
+/blog/unicode-history                      /blog/unicode-text-guide                 301
