@@ -4,11 +4,6 @@
         gap: 16px;
     }
 
-    .hero-grid {
-        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
-        gap: 44px;
-    }
-
     .generator-shell {
         grid-template-columns: 1fr;
     }
@@ -87,25 +82,10 @@
         padding: 13px 14px;
     }
 
-    .hero-grid,
     .decision-layout,
     .compatibility-layout,
     .faq-layout {
         grid-template-columns: 1fr;
-    }
-
-    .hero {
-        padding-top: 58px;
-    }
-
-    .hero-copy p {
-        max-width: 600px;
-    }
-
-    .hero-preview {
-        width: min(100%, 590px);
-        margin-top: 0;
-        transform: none;
     }
 
     .decision-layout .section-heading {
@@ -162,7 +142,6 @@
         font-size: clamp(2.25rem, 10.8vw, 3.6rem);
     }
 
-    .hero,
     .page-hero {
         padding-block: 50px 56px;
     }
@@ -173,7 +152,19 @@
     }
 
     .generator-section {
-        padding-top: 46px;
+        padding-top: 28px;
+    }
+
+    .generator-intro {
+        margin-bottom: 22px;
+    }
+
+    .generator-intro h1 {
+        font-size: clamp(2.45rem, 12vw, 3.4rem);
+    }
+
+    .generator-intro p {
+        font-size: 0.98rem;
     }
 
     .generator-shell {
@@ -296,14 +287,6 @@
     .nav-toggle {
         min-height: 38px;
         padding-inline: 9px;
-    }
-
-    .preview-row {
-        padding-inline: 18px;
-    }
-
-    .preview-row strong {
-        font-size: 1.42rem;
     }
 
     .unicode-card {

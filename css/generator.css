@@ -1,7 +1,25 @@
 .generator-section {
-    padding: clamp(52px, 7vw, 84px) 0 clamp(78px, 10vw, 120px);
-    border-top: 1px solid var(--line);
+    padding: clamp(34px, 5vw, 58px) 0 clamp(78px, 10vw, 120px);
     background: var(--surface-raised);
+}
+
+.generator-intro {
+    max-width: 760px;
+    margin: 0 auto clamp(24px, 3vw, 34px);
+    text-align: center;
+}
+
+.generator-intro h1 {
+    max-width: none;
+    margin-bottom: 0.7rem;
+    font-size: clamp(2.7rem, 5.4vw, 4.7rem);
+    line-height: 1;
+}
+
+.generator-intro p {
+    max-width: 58ch;
+    margin: 0 auto;
+    font-size: clamp(1rem, 1.5vw, 1.12rem);
 }
 
 .generator-shell {
