@@ -74,6 +74,18 @@ function plainText(value) {
   return value.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
+function visibleText(html) {
+  return plainText(html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi, ' '));
+}
+
+function wordCount(value) {
+  const text = visibleText(value);
+  return text ? text.split(/\s+/).length : 0;
+}
+
 function normalizeRoute(pathname) {
   if (pathname.length > 1 && pathname.endsWith('/')) return pathname.slice(0, -1);
   return pathname;
@@ -216,6 +228,13 @@ for (const file of htmlFiles) {
   if (hasMetaKeywords) fail(`${file}: meta keywords are not used by this site`);
   if (/[—–]/.test(html)) fail(`${file}: visible long-dash characters are not allowed by the design system`);
   if (html.includes('GA_MEASUREMENT_ID')) fail(`${file}: placeholder analytics ID is still present`);
+  const consentDefaultsPosition = html.indexOf('/js/google-consent-defaults.js');
+  const googleTagPosition = html.indexOf('https://www.googletagmanager.com/gtag/js');
+  if (consentDefaultsPosition === -1) {
+    fail(`${file}: missing regional Google consent defaults`);
+  } else if (googleTagPosition !== -1 && consentDefaultsPosition > googleTagPosition) {
+    fail(`${file}: consent defaults must load before the Google tag`);
+  }
   if (file === '404.html') {
     if (canonicals.length !== 0) fail(`${file}: a not-found page must not declare a canonical URL`);
   } else if (canonicals.length !== 1) {
@@ -284,6 +303,58 @@ for (const page of htmlPages) {
     fail(`${page.file}: redirect source must canonicalize to ${redirectTarget}`);
   } else if (!redirectTarget && !page.noindex && canonicalRoute !== page.route) {
     fail(`${page.file}: indexable page must self-canonicalize to ${page.route}`);
+  }
+}
+
+const articlePages = htmlPages.filter((page) => {
+  return page.file.startsWith('blog/') && !page.noindex && !redirects.has(page.route);
+});
+
+for (const page of articlePages) {
+  const count = wordCount(page.html);
+  if (count < 800) {
+    fail(`${page.file}: substantial guides need at least 800 visible words, found ${count}`);
+  }
+  if (!page.html.includes('class="article-meta"')) {
+    fail(`${page.file}: guide is missing published and reviewed dates`);
+  }
+  if (!page.html.includes('"@type": "Article"')) {
+    fail(`${page.file}: guide is missing Article structured data`);
+  }
+}
+
+const blogIndex = pageByRoute.get('/blog');
+if (blogIndex) {
+  for (const article of articlePages) {
+    if (!blogIndex.html.includes(`href="${article.route}"`)) {
+      fail(`blog.html: missing guide index link to ${article.route}`);
+    }
+  }
+}
+
+const privacyPage = pageByRoute.get('/privacy');
+if (privacyPage) {
+  const requiredPrivacyDisclosures = [
+    'Google AdSense',
+    'Third-party vendors',
+    'advertising cookies',
+    'Google Ads Settings',
+    'web beacons',
+    'IP addresses',
+  ];
+  for (const disclosure of requiredPrivacyDisclosures) {
+    if (!privacyPage.html.toLowerCase().includes(disclosure.toLowerCase())) {
+      fail(`privacy.html: missing advertising disclosure (${disclosure})`);
+    }
+  }
+}
+
+const aboutPage = pageByRoute.get('/services');
+if (aboutPage) {
+  if (aboutPage.noindex) fail('services.html: the substantive About page must be indexable');
+  if (!aboutPage.ids.has('editorial')) fail('services.html: missing editorial and ownership information');
+  if (!aboutPage.html.includes('support@boldtextgenerator.me')) {
+    fail('services.html: missing a working editorial contact address');
   }
 }
 
@@ -403,6 +474,16 @@ try {
 
 const homepage = pageByRoute.get('/');
 const measurementId = homepage?.configIds[0] ?? homepage?.loaderIds[0];
+
+const consentDefaultsSource = await fs.readFile(path.join(ROOT, 'js/google-consent-defaults.js'), 'utf8').catch(() => '');
+for (const consentType of ['ad_storage', 'ad_user_data', 'ad_personalization', 'analytics_storage']) {
+  if (!consentDefaultsSource.includes(`${consentType}: 'denied'`)) {
+    fail(`js/google-consent-defaults.js: missing denied default for ${consentType}`);
+  }
+}
+if (!consentDefaultsSource.includes("'GB'") || !consentDefaultsSource.includes("'CH'")) {
+  fail('js/google-consent-defaults.js: regulated-region defaults must include the UK and Switzerland');
+}
 
 if (!measurementId) {
   fail('index.html: could not determine the GA4 measurement ID');
