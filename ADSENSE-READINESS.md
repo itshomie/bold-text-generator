@@ -4,9 +4,9 @@ Updated: 2026-07-16
 
 ## Decision
 
-**Ready for AdSense account setup. Not ready to request review until the account-specific steps are complete.**
+**Ready after one account-side fix. The AdSense verification code and ads.txt are configured.**
 
-The source, content, privacy disclosure, navigation, crawlability, and responsive experience are ready. The owner must next add the site in AdSense, provide the real publisher ID or verification code, and configure Google's certified European consent message. A placeholder publisher ID must not be published.
+The source, content, privacy disclosure, navigation, crawlability, responsive experience, AdSense verification code, and authorized seller record are ready. The remaining account-side requirement is to configure Google's certified European consent message before requesting review.
 
 ## Completed in this repair
 
@@ -16,15 +16,16 @@ The source, content, privacy disclosure, navigation, crawlability, and responsiv
 - Added four original guides, bringing the guide library to seven substantive articles.
 - Added every indexable page to the sitemap and linked every guide from the guide index.
 - Added automated checks for guide depth, metadata, privacy disclosures, trust information, consent defaults, links, canonicals, redirects, assets, GA4, and sitemap completeness.
+- Added the official AdSense loader with client `ca-pub-5411294301280436` to every page head.
+- Published the exact Google authorized seller line for publisher `pub-5411294301280436` in `/ads.txt`.
 - Verified the Cloudflare Pages local runtime, desktop layout, 390px mobile layout, 404 behavior, and legacy redirects.
 
 ## Remaining owner/account steps
 
 1. Confirm the applicant is at least 18 and does not create a duplicate AdSense account.
-2. Add `boldtextgenerator.me` in AdSense and provide the exact verification code or meta tag.
-3. Provide the exact `pub-XXXXXXXXXXXXXXXX` publisher ID so `/ads.txt` can be created.
-4. In AdSense Privacy and messaging, create and publish a Google-certified European regulations consent message.
-5. Deploy those account-specific changes and run the full audit again before requesting review.
+2. In AdSense Privacy and messaging, create and publish a Google-certified European regulations consent message.
+3. After deployment is verified, return to AdSense and confirm that the code and ads.txt have been added.
+4. Run the final account-side audit before requesting review.
 
 ## Exhaustive checklist
 
@@ -34,13 +35,13 @@ The source, content, privacy disclosure, navigation, crawlability, and responsiv
 | ADS-ELIG-02 | Unknown | Existing AdSense account status is not available. | Reuse an existing account and do not create a duplicate. |
 | ADS-ELIG-03 | Fail | Site content passes, but the account-side certified CMP is not configured yet. | Complete the European regulations message before review. |
 | ADS-ELIG-04 | N/A | Independent website, not Blogger, YouTube, or a hosted partner. | None. |
-| ADS-OWN-01 | Pass | Repository controls every page head and deployment template. | Add the exact AdSense verification code later. |
+| ADS-OWN-01 | Pass | Repository controls every page head; the official client code is installed on all 12 pages. | None. |
 | ADS-OWN-02 | Pass | Repository access plus verified GSC domain ownership. | None. |
 | ADS-OWN-03 | Pass | Generator and navigation render and work with JavaScript. | None. |
 | ADS-SITE-01 | Unknown | Site has not yet been added and reviewed in AdSense. | Add site, verify ownership, and wait for Ready status. |
-| ADS-SITE-02 | Pass | Head, root files, and meta tags can be deployed. | Use the verification method shown by AdSense. |
-| ADS-TXT-01 | N/A | No real AdSense publisher ID exists in the project yet. | Recheck after the ID is provided. |
-| ADS-TXT-02 | Fail | `/ads.txt` is intentionally absent until the real publisher ID is known. | Publish the exact seller line supplied by AdSense. |
+| ADS-SITE-02 | Pass | Official AdSense client code is installed in every page head. | Confirm verification in AdSense after deployment. |
+| ADS-TXT-01 | Pass | `/ads.txt` lists `pub-5411294301280436` as a direct Google seller. | Confirm Authorized status in AdSense after Google recrawls it. |
+| ADS-TXT-02 | Pass | A root-level ads.txt file contains the exact seller line supplied by AdSense. | None. |
 | ADS-CONTENT-01 | Pass | Working local tool plus seven original task-specific guides. | Maintain content accuracy. |
 | ADS-CONTENT-02 | Pass | No scraped feeds, syndicated articles, or embedded-only pages. | Keep sources and original analysis. |
 | ADS-CONTENT-03 | Pass | Each guide has substantial explanatory content and the homepage provides a functioning tool. | Maintain automated depth checks. |
@@ -66,8 +67,8 @@ The source, content, privacy disclosure, navigation, crawlability, and responsiv
 | ADS-PROG-02 | Pass | No copy encourages users to click or view ads. | Keep wording neutral. |
 | ADS-PROG-03 | N/A | No ads are currently displayed. | Clearly distinguish ads when enabled. |
 | ADS-PROG-04 | Pass | GA and GSC showed primarily organic and direct traffic, not click schemes. | Continue monitoring sources. |
-| ADS-PROG-05 | N/A | No AdSense code exists yet. | Do not modify code to inflate performance. |
-| ADS-PROG-06 | N/A | No ads are placed yet. | Place ads only on substantive public content pages. |
+| ADS-PROG-05 | Pass | The official async AdSense loader is used unchanged with the supplied client ID. | Keep the loader unmodified. |
+| ADS-PROG-06 | N/A | Site verification code is installed, but no manual ad units are placed yet. | Exclude privacy and 404 URLs if Auto ads are enabled after approval. |
 | ADS-PROG-07 | N/A | Normal website, not an app WebView. | None. |
 | ADS-PUB-01 | Pass | Utility and educational content contains no illegal activity. | None. |
 | ADS-PUB-02 | Pass | Original interface, code, and articles; no counterfeit or copied media. | Continue respecting external rights. |
@@ -77,7 +78,7 @@ The source, content, privacy disclosure, navigation, crawlability, and responsiv
 | ADS-PUB-06 | Pass | No phishing forms, deceptive service claims, or get-rich offers. | None. |
 | ADS-PUB-07 | Pass | No cheating, hacking, evasion, or unauthorized tracking tools. | None. |
 | ADS-PUB-08 | Pass | No sexual content, paid sexual services, or child exploitation. | None. |
-| ADS-PUB-09 | Pass | Domain, canonical, metadata, analytics, and privacy information are consistent. | Add the correct publisher ID when available. |
+| ADS-PUB-09 | Pass | Domain, metadata, AdSense client, and ads.txt publisher IDs are accurate and consistent. | Keep account and site mapping unchanged. |
 | ADS-PUB-10 | N/A | No ads are currently displayed. | Ensure future ads do not obstruct content or navigation. |
 | ADS-PUB-11 | Pass | Indexable pages contain a functioning tool, substantive guide, or detailed About information. | Do not put ads on privacy or 404 pages. |
 | ADS-PUB-12 | N/A | No ad placements exist. | Keep ads in context with the associated content. |

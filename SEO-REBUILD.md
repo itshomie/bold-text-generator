@@ -58,15 +58,14 @@ All other missing URLs should return the custom `404.html` with an actual HTTP 4
 
 ## AdSense preparation
 
-The source is ready for an AdSense publisher ID and account-specific verification code. Do not add a placeholder publisher ID.
+The official AdSense client code and seller record for publisher `pub-5411294301280436` were added on 2026-07-16.
 
 After the owner adds the site in AdSense:
 
-1. Add the exact verification code or meta tag supplied by AdSense.
-2. Add the exact publisher line to `/ads.txt`.
-3. Configure a Google-certified European regulations consent message in AdSense Privacy and messaging.
-4. Deploy and verify the code, consent message, and `/ads.txt` on the live domain.
-5. Run the full AdSense readiness audit again before requesting review.
+1. Configure a Google-certified European regulations consent message in AdSense Privacy and messaging.
+2. Deploy and verify the AdSense code and `/ads.txt` on the live domain.
+3. Confirm the site code and ads.txt status in AdSense.
+4. Run the final AdSense readiness audit before requesting review.
 
 ## Post-deploy checks
 

@@ -4,6 +4,8 @@ import process from 'node:process';
 
 const ROOT = process.cwd();
 const SITE_ORIGIN = 'https://boldtextgenerator.me';
+const ADSENSE_CLIENT = 'ca-pub-5411294301280436';
+const ADSENSE_SELLER_LINE = 'google.com, pub-5411294301280436, DIRECT, f08c47fec0942fa0';
 const IGNORED_DIRECTORIES = new Set(['.git', 'node_modules', 'dist', 'build']);
 const errors = new Set();
 
@@ -169,6 +171,33 @@ function collectGaIds(html) {
   return { loaderIds, configIds };
 }
 
+function collectAdsenseTags(html) {
+  const tags = [];
+
+  for (const script of openingTags(html, 'script')) {
+    const attributes = parseAttributes(script);
+    const src = attributes.get('src');
+    if (!src) continue;
+
+    try {
+      const url = new URL(src, SITE_ORIGIN);
+      if (url.hostname !== 'pagead2.googlesyndication.com' || url.pathname !== '/pagead/js/adsbygoogle.js') {
+        continue;
+      }
+
+      tags.push({
+        client: url.searchParams.get('client'),
+        crossorigin: attributes.get('crossorigin'),
+        async: attributes.has('async'),
+      });
+    } catch {
+      // Invalid script URLs are handled by the checks below.
+    }
+  }
+
+  return tags;
+}
+
 function parseRedirects(source) {
   const redirects = new Map();
 
@@ -229,11 +258,28 @@ for (const file of htmlFiles) {
   if (/[—–]/.test(html)) fail(`${file}: visible long-dash characters are not allowed by the design system`);
   if (html.includes('GA_MEASUREMENT_ID')) fail(`${file}: placeholder analytics ID is still present`);
   const consentDefaultsPosition = html.indexOf('/js/google-consent-defaults.js');
+  const adsensePosition = html.indexOf('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
   const googleTagPosition = html.indexOf('https://www.googletagmanager.com/gtag/js');
   if (consentDefaultsPosition === -1) {
     fail(`${file}: missing regional Google consent defaults`);
+  } else if (adsensePosition !== -1 && consentDefaultsPosition > adsensePosition) {
+    fail(`${file}: consent defaults must load before the AdSense tag`);
   } else if (googleTagPosition !== -1 && consentDefaultsPosition > googleTagPosition) {
     fail(`${file}: consent defaults must load before the Google tag`);
+  }
+
+  const adsenseTags = collectAdsenseTags(html);
+  if (adsenseTags.length !== 1) {
+    fail(`${file}: expected exactly one AdSense loader, found ${adsenseTags.length}`);
+  } else {
+    const [adsenseTag] = adsenseTags;
+    if (adsenseTag.client !== ADSENSE_CLIENT) {
+      fail(`${file}: AdSense client must be ${ADSENSE_CLIENT}`);
+    }
+    if (!adsenseTag.async) fail(`${file}: AdSense loader must be async`);
+    if (adsenseTag.crossorigin !== 'anonymous') {
+      fail(`${file}: AdSense loader must use crossorigin="anonymous"`);
+    }
   }
   if (file === '404.html') {
     if (canonicals.length !== 0) fail(`${file}: a not-found page must not declare a canonical URL`);
@@ -564,6 +610,11 @@ if (!sitemapSource) {
   for (const sitemapUrl of sitemapUrls) {
     if (!expectedIndexableCanonicals.has(sitemapUrl)) fail(`sitemap.xml: contains a non-indexable or non-canonical URL (${sitemapUrl})`);
   }
+}
+
+const adsTxtSource = await fs.readFile(path.join(ROOT, 'ads.txt'), 'utf8').catch(() => '');
+if (adsTxtSource.trim() !== ADSENSE_SELLER_LINE) {
+  fail(`ads.txt: expected exactly ${ADSENSE_SELLER_LINE}`);
 }
 
 if (errors.size > 0) {
